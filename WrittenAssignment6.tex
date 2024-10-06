@@ -85,6 +85,8 @@ MICS Course 252 Fall 2024 (Kristy Westphal)
 \section{Introduction}
 Threat modelling in cyber security is fairly unique compared to other industries, in other industries the risks to assets and processes are from accidents or involuntary 'incidents', with cybersecurity threats are from malicious actors who actively tries to exploit the assets. Cyber security is in that regard  comparable to the military or law enforcement (which is probably the reason fo all the acronyms in the industry..). OWASP proposes a four question framework\cite{OWASP_ThreatModellingProject} to organize threat modelling in general, which i have freely interpreted as:
 
+
+\begin{spacing}{1}
 \begin{itemize}
 	\item What are we working on?
 	\begin{itemize}
@@ -103,7 +105,7 @@ Threat modelling in cyber security is fairly unique compared to other industries
 		\item Evaluate (could be part of a higher level parent process e.g PDCA\footnote{Plan Do Check Act, a process for continual process improvement\cite{PDCA_Wiki}})
 	\end{itemize}
 \end{itemize}
-
+\end{spacing}
 I.e. the purpose of a threat model is to identify adversaries, attack techniques\footnote{e.g. using MITRE att\&ck} and vulnerabilities, and provide clarity on how to mitigate these.   
 
 Threat modelling is a component in the overall security assessment of a system/process/company/asset and is applied both at a high level for a whole organization and at a detailed level for an application or feature, hence there is somewhat of a spread in threat assessment methodologies\cite{12Methods}, depending on where they are applied. Much like a FMECA\footnote{Failure Mode Effects and Criticality Analysis} is a "what could possibly break in this component/system and what are the likely hoods fora it and the consequences if it does", the Threat model is a "Why, how and who would want to break/break-into/steal data from this system, and how do we protect it" Common in both cases are identify risks and clarify how to mitigate.
@@ -125,6 +127,7 @@ The stride model looks at six categories to capture, cover and quantify the thre
 
 \subsection{Steps in a STRIDE analysis}
 
+\begin{spacing}{1}
 \begin{enumerate}
 	\item Tally up assets (inventory)
 	\item Prepare a Data Flow Diagram (DFD)
@@ -135,7 +138,7 @@ The stride model looks at six categories to capture, cover and quantify the thre
 		\item Propose Mitigation
 	\end{itemize} 
 \end{enumerate}
-
+\end{spacing}
 
 \subsection{Asset Enumeration}
 A simplified list of assets on the network is shown in Table\ref{tab:assets}, details such as protocols used and software versions should also be included in a detailed enumeration.
@@ -176,9 +179,9 @@ Everything on the subnet is un regulated, the main boundary to the internet is b
 \section{STRIDE evaluation}
 Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the assets can be lumped together as they share the same STRIDE weakness. 
 
-
-\subsection{\underline{S}poofing}
 \begin{singlespace}
+\subsection{\underline{S}poofing}
+
 
 \begin{itemize}
 	\item SmartTV\'s
@@ -219,9 +222,9 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 
 
 \end{singlespace}
-
-\subsection{\underline{T}ampering}
 \begin{singlespace}
+\subsection{\underline{T}ampering}
+
 
 	\begin{itemize}
 		\item SmartTV\'s
@@ -229,7 +232,7 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 		\item IOT gadgets 
 	\end{itemize}
 	
-	\subsubsection{Weaknesses:} These often run on outdated firmware and may have security flaws that allow an attacker to tamper with their functionality, potentially turning IoT cameras into surveillance tools for attackers.
+	\subsubsection{Weaknesses:} These often run on outdated firmware and may have security flaws that allow an attacker to tamper with their functionality, potentially turning IoT cameras into surveillance tools for attackers, or spoiling foods in a smart fridge.
 	\subsubsection{Mitigaiton:} Put devices on a separate network, keep assets software versions updated
 	
 	\begin{itemize}
@@ -258,11 +261,11 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 	
 \end{singlespace}
 	
-
+\begin{singlespace}
 \subsection{\underline{R}epudiation}
 There are no formal requirements for repudiation on a home network, however if something happens logging is extremely important for trouble shooting and investigation.  
 
-\begin{singlespace}
+
 
 	\begin{itemize}
 		\item SmartTV\'s
@@ -282,10 +285,10 @@ There are no formal requirements for repudiation on a home network, however if s
 		
 \end{singlespace}
 
-
+\begin{singlespace}
 \subsection{\underline{I}nformation disclosure}
 
-\begin{singlespace}
+
 
 	\begin{itemize}
 		\item SmartTV\'s
@@ -316,9 +319,9 @@ There are no formal requirements for repudiation on a home network, however if s
 	
 \end{singlespace}
 
-
-\subsection{\underline{D}enial os service}
 \begin{singlespace}
+\subsection{\underline{D}enial os service}
+
 
 	\begin{itemize}
 		\item SmartTV\'s
@@ -346,19 +349,38 @@ There are no formal requirements for repudiation on a home network, however if s
 \end{singlespace}
 
 
-
+\begin{singlespace}
 \subsection{\underline{E}levation of privilege} 
 
 
 
+	\begin{itemize}
+		\item SmartTV\'s
+		\item IOT gadgets 
+	\end{itemize}
+	
+	\subsubsection{Weaknesses:} Vulnerabilities in the firmware might allow attackers to take over the devices entirely, giving them control over camera feeds or other sensitive functions.
+	\subsubsection{Mitigaiton:} Put devices on a separate network, keep assets software versions updated
+	
+	\begin{itemize}
+		\item WorkPC
+	\end{itemize}
+	
+	\subsubsection{Weaknesses:} If attackers gain access to the work PC, they could potentially escalate their privileges within the corporate network. This poses a significant risk, especially if the work PC is not properly secured or if the attacker can exploit the VPN connection to gain broader network access.
 
-
+	\begin{itemize}
+		\item Router
+	\end{itemize}
+	
+	\subsubsection{Weaknesses:} Gaining privileged access to the router could allow attackers to control traffic, including the VPN connection. They could potentially reroute sensitive corporate data or exploit the work PC\'s connection to the corporate network.
+	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities sre found for the asset, do not disable security measures.
+	
+	
+\end{singlespace}
 
 
 \section{Conclusion}
-Highly recommend using a tool for this..
-There is a lot of copy-pasting, and the tools to do the analysis often end up with 'consultant' flavor to it, where everything is covered but conclusions are difficult to identify. Hence you need to know what you are analyzing to produce a usable analysis result.
-
+I Highly recommend using a tool for this (doing it manually is a bit of a chore). There is a lot of copy-pasting, of weaknesses and mitigations, i see benefits in automating the filling out of STRIDE items, this would also make it easier to keep tally of which weaknesses and mitigations occur the most. A disadvantage of using tools to do the analysis is that reporting often end up with 'consultant' flavor to it, where everything is covered but conclusions are difficult to identify. I think it is important that the analyses are carried out bu someone both familiar with the systems being modelled, and the models themselves.
 
 %----------------------------------------------------------------------------------------
 %	 REFERENCES
