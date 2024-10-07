@@ -83,18 +83,18 @@ MICS Course 252 Fall 2024 (Kristy Westphal)
 
 
 \section{Introduction}
-Threat modelling in cyber security is fairly unique compared to other industries, in other industries the risks to assets and processes are from accidents or involuntary 'incidents', with cybersecurity threats are from malicious actors who actively tries to exploit the assets. Cyber security is in that regard  comparable to the military or law enforcement (which is probably the reason fo all the acronyms in the industry..). OWASP proposes a four question framework\cite{OWASP_ThreatModellingProject} to organize threat modelling in general, which i have freely interpreted as:
+Threat modelling in cyber security is fairly unique compared to other industries, in other industries the risks to assets and processes are from accidents or involuntary 'incidents'. Cybersecurity threats are from malicious actors who actively tries to exploit the assets, in that regard cybersecurity is comparable to the military or law enforcement (which is probably the reason fo all the acronyms in the industry!). OWASP proposes a 'four question' framework\cite{OWASP_ThreatModellingProject} to organize threat modelling in general, which I have freely interpreted as:
 
 
 \begin{spacing}{1}
 \begin{itemize}
 	\item What are we working on?
 	\begin{itemize}
-		\item Scope definition (the thing could be anything from a feature in an app to a whole network)
+		\item Scope definition (The thing could be anything from a feature in an app to a whole network)
 	\end{itemize}
 	\item What can go wrong?
 	\begin{itemize}
-		\item Risk assessment (brainstorm and prioritization)	
+		\item Risk assessment (Brainstorm and Prioritization)	
 	\end{itemize}
 	\item What are we going to do about it?
 	\begin{itemize}
@@ -102,19 +102,19 @@ Threat modelling in cyber security is fairly unique compared to other industries
 	\end{itemize}
 	\item Did we do a good job?
 	\begin{itemize}
-		\item Evaluate (could be part of a higher level parent process e.g PDCA\footnote{Plan Do Check Act, a process for continual process improvement\cite{PDCA_Wiki}})
+		\item Evaluate (Could be part of a higher level parent process e.g PDCA\footnote{Plan Do Check Act, a process for continual process improvement\cite{PDCA_Wiki}})
 	\end{itemize}
 \end{itemize}
 \end{spacing}
 I.e. the purpose of a threat model is to identify adversaries, attack techniques\footnote{e.g. using MITRE att\&ck} and vulnerabilities, and provide clarity on how to mitigate these.   
 
-Threat modelling is a component in the overall security assessment of a system/process/company/asset and is applied both at a high level for a whole organization and at a detailed level for an application or feature, hence there is somewhat of a spread in threat assessment methodologies\cite{12Methods}, depending on where they are applied. Much like a FMECA\footnote{Failure Mode Effects and Criticality Analysis} is a "what could possibly break in this component/system and what are the likely hoods fora it and the consequences if it does", the Threat model is a "Why, how and who would want to break/break-into/steal data from this system, and how do we protect it" Common in both cases are identify risks and clarify how to mitigate.
+Threat modelling is a component in the overall security assessment of a system/process/company/asset and is applied both at a high level for a whole organization and at a detailed level for an application or feature, hence there is somewhat of a spread in threat assessment methodologies\cite{12Methods}, depending on where they are applied. Much like a FMECA\footnote{Failure Mode Effects and Criticality Analysis} is a "what could possibly break in this component/system and what are the probabilities and consequences", the Threat model is a "How could someone break/break-into/steal data from this system, and how do we protect it" Common in both cases are to identify risks and how to mitigate.
 
 For this assignment I choose to apply the 'STRIDE' model to a fictitious home router setup which most households have (the question of security with these often comes up at dinner parties).
 
 \section{STRIDE}
 
-The stride model looks at six categories to capture, cover and quantify the threats to a system: \underline{S}poofing \underline{T}ampering \underline{R}epudiation \underline{I}nformation disclosure, \underline{D}enial os service, \underline{E}levation of privilege. 
+The stride model looks at six categories to capture, cover and quantify the threats to a system: \underline{S}poofing \underline{T}ampering \underline{R}epudiation \underline{I}nformation disclosure, \underline{D}enial os service, \underline{E}levation of privilege, illustrated in Figure \ref{fig:STRIDE}. 
 
 
 
@@ -141,15 +141,15 @@ The stride model looks at six categories to capture, cover and quantify the thre
 \end{spacing}
 
 \subsection{Asset Enumeration}
-A simplified list of assets on the network is shown in Table\ref{tab:assets}, details such as protocols used and software versions should also be included in a detailed enumeration.
+A simplified list of assets on the network is shown in Table \ref{tab:assets}, details such as protocols used and software versions should also be included in a detailed enumeration.
 
 \begin{table}[htp]
 	\begin{tabular}{|l|l|lll}
 		\cline{1-2}
 		\textbf{Item}       & \textbf{Description}                                                             &  &  &  \\ \cline{1-2}
-		SmartTV\'s           & Wifi connected, has embedded os, receives updates over port 80/443               &  &  &  \\ \cline{1-2}
+		SmartTVs           & Wifi connected, has embedded os, receives updates over port 80/443               &  &  &  \\ \cline{1-2}
 		Printer             & Network discoverable on local network (IGMP/M-DNS)                               &  &  &  \\ \cline{1-2}
-		KidsGamerPC\'s       & Windows os, no restrictions on traffic                                           &  &  &  \\ \cline{1-2}
+		KidsGamerPCs       & Windows os, no restrictions on traffic                                           &  &  &  \\ \cline{1-2}
 		IOT gadgets         & MQTT broker/server connected to internet service                                 &  &  &  \\ \cline{1-2}
 		Mobile devices      & Ipdas, phones etc,                                                               &  &  &  \\ \cline{1-2}
 		Guests joining Wifi & Kids share wifi passwords with their friends etc.                                &  &  &  \\ \cline{1-2}
@@ -162,29 +162,29 @@ A simplified list of assets on the network is shown in Table\ref{tab:assets}, de
 
 
 \subsection{DFD}
-The Data flow diagram is shown in Figure \ref{fig:DFD}, Data inbound is only allowed on TCP port 80 and 443, outbound traffic and traffic on the internal network in not limited. The traffic on the internal network consists of a multitude of data and protocols, IOT devices communicate on their own sub protocols (MQTT, zigbee, bluetooth etc.) with servers connected to the home network.
+The Data flow diagram is shown in Figure \ref{fig:DFD}, Traffic inbound is only allowed on TCP port 80 and 443, outbound traffic and traffic on the internal network in not limited. 
 
 \begin{figure}[!htp] % Single column :figure	
 	\centering
 	\includegraphics[width=\linewidth]{DFD_home.png}
-	\caption{Simple home network Data Flow Diagram, Inbound data only allowed on port 80 and 443, unlimited traffic outbound and on internal subnet}
+	\caption{Simple home network Data Flow Diagram, Inbound data only allowed on port 80 and 443, traffic is unlimited on the internal subnet}
 	\label{fig:DFD}
 \end{figure}
 
 
 \subsection{Boundaries}
-Everything on the subnet is un regulated, the main boundary to the internet is blockings all inbound traffic except for TCP port 80 and 443 (red, dashed line in \ref{fig:DFD}), i.e. the main boundary asset is at the router. However, as guests are sometimes allowed onto the it could be argued the they constitute a trust boundary, all the IOT devices, TV's, mobile devices etc, communicates with servers outside the network, receives software updates etc. Therefore each asset is a trust boundary which should be considered (hence the dotted lines around everything.. in Figure \ref{fig:DFD}). 
+The traffic on the internal network consists of a multitude of data and protocols, IOT devices communicate on their own sub protocols (MQTT, zigbee, bluetooth etc.) with servers connected to the home network.
+The main boundary to the internet in Figure \ref{fig:DFD} is marked with red, dashed line i.e. the main boundary asset is at the router. However, guests are sometimes allowed onto the network, all the IOT devices, TV's, mobile devices etc. communicates with servers outside the network (receives software updates etc.). Therefore each asset is within a trust boundary which should be considered (hence the dotted lines around everything.. in Figure \ref{fig:DFD}). 
 
 
 \section{STRIDE evaluation}
-Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the assets can be lumped together as they share the same STRIDE weakness. 
+Each asset in Table \ref{tab:assets} is evaluated for each stride. Some of the assets can be lumped together as they share the same STRIDE weakness. 
 
 \begin{singlespace}
 \subsection{\underline{S}poofing}
 
-
 \begin{itemize}
-	\item SmartTV\'s
+	\item SmartTVs
 	\item Printer 
 	\item IOT gadgets 
 \end{itemize}
@@ -193,7 +193,7 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 \subsubsection{Mitigaiton:} Put devices on a separate network, keep assets software versions updated
 
 \begin{itemize}
-	\item KidsGamerPC\'s
+	\item KidsGamerPCs
 \end{itemize}
 
 \subsubsection{Weaknesses:} The pc's are open to the internet with a human in the loop, this gives a indirect access to the local network if e.g. phishing is successful
@@ -203,7 +203,7 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 	\item Guests joining Wifi
 \end{itemize}
 
-\subsubsection{Weaknesses:} Wifi passwords may be shared, so anyone can access the private network
+\subsubsection{Weaknesses:} Wifi passwords may be shared, so anyone can access the private network after the "guests" have left.
 \subsubsection{Mitigaiton:} Put guest on a separate subnet (most home routers have this functionality out of the box)
 
 \begin{itemize}
@@ -227,7 +227,7 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 
 
 	\begin{itemize}
-		\item SmartTV\'s
+		\item SmartTVs
 		\item Printer 
 		\item IOT gadgets 
 	\end{itemize}
@@ -236,7 +236,7 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 	\subsubsection{Mitigaiton:} Put devices on a separate network, keep assets software versions updated
 	
 	\begin{itemize}
-		\item KidsGamerPC\'s
+		\item KidsGamerPCs
 		\item Work pc
 		\item Mobile devices
 	\end{itemize}
@@ -255,20 +255,18 @@ Each asset in Table \ref{tab:assets} is revaluated for each stride. Some of the 
 		\item Router
 	\end{itemize}
 	
-	\subsubsection{Weaknesses:} Configuration settings could be tampered with (if management interfaces are insecure), allowing an attacker to disable protection mechanisms, open ports, or alter routing behavior. Tampering with the firewall could allow an attacker to bypass VPN protections, affecting not only home devices but also the work PC\'s connection to the corporate network.
-	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities sre found for the asset
+	\subsubsection{Weaknesses:} Configuration settings could be tampered with (if management interfaces are insecure), allowing an attacker to disable protection mechanisms, open ports, or alter routing behavior. Tampering with the firewall could allow an attacker to bypass VPN protections, affecting not only home devices but also the work PCs connection to the corporate network.
+	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news to pick up if vulnerabilities sre found for the asset
 	
 	
 \end{singlespace}
 	
 \begin{singlespace}
 \subsection{\underline{R}epudiation}
-There are no formal requirements for repudiation on a home network, however if something happens logging is extremely important for trouble shooting and investigation.  
-
-
+There are no formal requirements for repudiation on a home network, however if something happens then logging is extremely important for trouble shooting and investigation.  
 
 	\begin{itemize}
-		\item SmartTV\'s
+		\item SmartTVs
 		\item Printer 
 		\item IOT gadgets 
 	\end{itemize}
@@ -280,7 +278,7 @@ There are no formal requirements for repudiation on a home network, however if s
 		\item Router
 	\end{itemize}
 	
-	\subsubsection{Weaknesses:} Most routers do basic logging, e.g. of which assets are connected to the network. If logging is compromised, a bad actor  coud hide on the network
+	\subsubsection{Weaknesses:} Most routers do basic logging, e.g. of which assets are connected to the network. If logging is compromised, a bad actor could hide on the network
 	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities sre found for the asset
 		
 \end{singlespace}
@@ -291,16 +289,16 @@ There are no formal requirements for repudiation on a home network, however if s
 
 
 	\begin{itemize}
-		\item SmartTV\'s
+		\item SmartTVs
 		\item Printer 
 		\item IOT gadgets 
 	\end{itemize}
 	
-	\subsubsection{Weaknesses:} These thing record confidential data e.g. video and audio could disclose sensitive information  
+	\subsubsection{Weaknesses:} These 'things' record confidential data e.g. video and audio could disclose sensitive information  
 	\subsubsection{Mitigaiton:} Put devices on a separate network, keep assets software versions updated
 	
 	\begin{itemize}
-		\item KidsGamerPC\'s
+		\item KidsGamerPCs
 		\item Work pc
 		\item Mobile devices
 	\end{itemize}
@@ -314,7 +312,7 @@ There are no formal requirements for repudiation on a home network, however if s
 	\end{itemize}
 	
 	\subsubsection{Weaknesses:} If the router or firewall is misconfigured or compromised, network traffic (including passwords or personal data) could be disclosed to attackers. Disabling SSL/TLS inspection may also lead to information leakage.
-	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities sre found for the asset, do not disable security measures
+	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities are found for the asset, do not disable security measures
 	
 	
 \end{singlespace}
@@ -324,7 +322,7 @@ There are no formal requirements for repudiation on a home network, however if s
 
 
 	\begin{itemize}
-		\item SmartTV\'s
+		\item SmartTVs
 		\item IOT gadgets 
 	\end{itemize}
 	
@@ -335,7 +333,7 @@ There are no formal requirements for repudiation on a home network, however if s
 		\item WorkPC
 	\end{itemize}
 	
-	\subsubsection{Weaknesses:} Attackers could target the work PC to disconnect it from the corporate network, potentially causing a loss of productivity. This could be done by overloading the VPN connection with traffic incentivizeing user to bypass the VPN making traffic insecure.
+	\subsubsection{Weaknesses:} Attackers could target the work PC to disconnect it from the corporate network, potentially causing a loss of productivity. This could be done by overloading the VPN connection with traffic incentivizing user to bypass the VPN making traffic insecure.
 	\subsubsection{Mitigaiton:} Have patience, report the incident using a separate channel and do not bypass the VPN
 
 	\begin{itemize}
@@ -343,7 +341,7 @@ There are no formal requirements for repudiation on a home network, however if s
 	\end{itemize}
 	
 	\subsubsection{Weaknesses:} Attackers could flood the network with traffic (DDoS) to overwhelm the router or firewall, causing loss of internet access.
-	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities sre found for the asset, do not disable security measures.
+	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities are found for the asset, do not disable security measures.
 	
 	
 \end{singlespace}
@@ -355,7 +353,7 @@ There are no formal requirements for repudiation on a home network, however if s
 
 
 	\begin{itemize}
-		\item SmartTV\'s
+		\item SmartTVs
 		\item IOT gadgets 
 	\end{itemize}
 	
@@ -372,7 +370,7 @@ There are no formal requirements for repudiation on a home network, however if s
 		\item Router
 	\end{itemize}
 	
-	\subsubsection{Weaknesses:} Gaining privileged access to the router could allow attackers to control traffic, including the VPN connection. They could potentially reroute sensitive corporate data or exploit the work PC\'s connection to the corporate network.
+	\subsubsection{Weaknesses:} Gaining privileged access to the router could allow attackers to control traffic, including the VPN connection. They could potentially reroute sensitive corporate data or exploit the work PCs connection to the corporate network.
 	\subsubsection{Mitigaiton:} Keep router firmware up to date, and follow the news if vulnerabilities sre found for the asset, do not disable security measures.
 	
 	
@@ -380,7 +378,15 @@ There are no formal requirements for repudiation on a home network, however if s
 
 
 \section{Conclusion}
-I Highly recommend using a tool for this (doing it manually is a bit of a chore). There is a lot of copy-pasting, of weaknesses and mitigations, i see benefits in automating the filling out of STRIDE items, this would also make it easier to keep tally of which weaknesses and mitigations occur the most. A disadvantage of using tools to do the analysis is that reporting often end up with 'consultant' flavor to it, where everything is covered but conclusions are difficult to identify. I think it is important that the analyses are carried out bu someone both familiar with the systems being modelled, and the models themselves.
+Following is identified by the analysis: 
+
+\subsubsection{Vulnerabilities:} 
+Assets (IOT devices, Smart TVs, guests) with security properties that we have no control over are a potential security risk to the network (if exploited, they have full access)
+
+\subsubsection{Mitigations:} 
+Put uncontrolled devices on separate subnet(s), most home routers have a 'Guest' network feature that can be used. For things that need access to the protected areas, keep software up to date. A home network should be treated as de-facto 'zero trust' zone, and deploy endpoint protections if possible (turn on local firewalls). For the more advanced user, deploy network monitoring . \\ 
+ 
+I Highly recommend using a tool for this (doing it manually is a bit of a chore). There is a lot of copy-pasting, of weaknesses and mitigations, automating the filling out of STRIDE items would also make it easier to keep tally of which weaknesses and mitigations occur the most. A disadvantage of using tools to do the analysis is that reporting often ends up with 'consultant' flavor to it, where everything is covered but conclusions are difficult to identify. I think it is important that the analyses are carried out bu someone both familiar with the systems being modelled, and the models themselves.
 
 %----------------------------------------------------------------------------------------
 %	 REFERENCES
